@@ -34,6 +34,22 @@
       <span class="btn btn-danger fa fa-paint-brush" id="drawing-circle"
         >Draw Circle</span
       > 
+      <!-- The drawing Bezier Curves button -->
+      <span class="btn btn-danger fa fa-paint-brush" id="bezier-curves"
+        >Draw Bezier curves</span
+      >   
+      <!-- The drawing Quadratic Curves button -->
+      <span class="btn btn-danger fa fa-paint-brush" id="quadratic-curves"
+        >Draw Quadratic curves</span
+      > 
+      <!-- The save button -->
+      <span class="btn btn-danger fa fa-paint-brush" id="save"
+        >Save</span
+      > 
+      <!-- The testing  button -->
+      <span class="btn btn-danger fa fa-paint-brush" id="test"
+        >test</span
+      > 
       <!-- jQuery -->
       <script
       src="https://code.jquery.com/jquery-3.5.1.js"
@@ -76,6 +92,32 @@
       async
       defer
     ></script>
+    <script
+      src="./javascript/variables.js"
+      type="text/javascript"
+      async
+      defer
+    ></script>
+    <script
+      src="./javascript/test.js"
+      type="text/javascript"
+      async
+      defer
+    ></script>
+    <!-- bezier curves -->
+    <script
+    src="./javascript/Bezier-curves.js"
+    type="text/javascript"
+    async
+    defer
+    ></script>
+    <!-- quadratic curves -->
+    <script
+      src="./javascript/quadratic-curve.js"
+      type="text/javascript"
+      async
+      defer
+    ></script>
     <script type="text/javascript">
     //strategy patterns
     // once clicked, instantiate currentFunction to the respective function
@@ -88,10 +130,16 @@
         currentFunction = new DrawingLine(contextReal);
       });  
       $("#drawing-triangle").click(() => {
-        currentFunction = new DrawingTriangle(contextReal);
+        currentFunction = new DrawingTriangle(contextReal,contextDraft);
       });  
       $("#drawing-circle").click(() => {
-        currentFunction = new DrawingCircle(contextReal);
+        currentFunction = new DrawingCircle(contextReal,contextDraft);
+      });  
+      $("#bezier-curves").click(() => {
+        currentFunction = new BezierCurves(contextReal,contextDraft);
+      });  
+      $("#quadratic-curves").click(() => {
+        currentFunction = new QuadraticCurves(contextReal,contextDraft);
       });  
     })
     </script>

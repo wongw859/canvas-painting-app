@@ -2,54 +2,69 @@
  * Drawing Triangle Functionality
  * ==================================
  ***********************************************/
-// https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/clearRect
+drawing = false;
+
 class DrawingTriangle extends PaintFunction {
-    constructor(contextReal, contextDraft, canvas) {
+    constructor(contextReal) {
         super();
         this.contextReal = contextReal;
         this.contextDraft = contextDraft;
-        this.canvas = document.getElementById("canvas");
-        this.ctx = canvas.getContext("2d");
+        this.clickNum = 0;
     }
 
+    onMouseDown() {}
 
+    onDragging() {}
 
-    onMouseDown(coord, event) {
-        this.contextReal.fillStyle = "#f44";
-        this.origX = coord[0];
-        this.origY = coord[1];
+    onMouseMove(coord, event) {
+        this.contextDraft.strokeStyle = 'none';
+        this.contextDraft.lineJoin = 'miter';
+        this.contextDraft.lineWidth = 10;
+        this.contextDraft.fillStyle = 'none';
 
-
-    }
-    onDragging(coord, event) {
-        this.contextDraft.fillStyle = "#f44";
-        this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
-        // this.contextDraft.filltri() {
-
-
-        // }
-    }
-
-    onMouseMove() {}
-    onMouseUp(coord) {
-        this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
-        // this.contextReal.filltri() {}
-    }
-    onMouseLeave() {}
-    onMouseEnter() {}
-
-    draw(x, y) {
-        var mouse = [];
-        var triangles = [];
-        for (var tIndex = 0; tIndex < triangles.length; tIndex++) {
-            var triangle = triangles[tIndex];
-            ctx.beginPath();
-            ctx.moveTo(triangle.a.x, triangle.a.y);
-            ctx.lineTo(triangle.b.x, triangle.b.y);
-            ctx.lineTo(triangle.c.x, triangle.c.y);
-            ctx.closePath();
-            ctx.stroke();
+        if (this.clickNum != 0 && drawing === false) {
+            this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+            this.clickNum = 0
+        } else if (this.clickNum != 0) {
+            this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+            this.draw(coord[0], coord[1], 3, this.contextDraft);
         }
     }
 
+    onMouseUp(coord, event) {
+        this.contextDraft.strokeStyle = 'none';
+        this.contextDraft.lineJoin = 'miter';
+        this.contextDraft.lineWidth = 10;
+        this.contextDraft.fillStyle = 'none';
+
+        if (this.clickNum === 0) {
+            this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+
+            this.origX = coord[0];
+            this.origY = coord[1];
+            this.clickNum++
+                drawing = true
+        } else if (this.clickNum != 0) {
+            this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+            this.draw(coord[0], coord[1], 3, this.contextReal);
+            this.clickNum = 0
+        }
+    }
+
+    onMouseLeave() {}
+    onMouseEnter() {}
+
+    draw(x, y, sides, context) {
+        context.beginPath();
+        context.moveTo(x, y);
+        for (let i = 1; i < sides; i++) {
+            let angle = i * 2 * Math.PI / sides
+            let rotatedX = Math.cos(angle) * (x - this.origX) - Math.sin(angle) * (y - this.origY) + this.origX;
+            let rotatedY = Math.sin(angle) * (x - this.origX) + Math.cos(angle) * (y - this.origY) + this.origY;
+            context.lineTo(rotatedX, rotatedY);
+        }
+        context.closePath();
+        context.fill();
+        context.stroke();
+    }
 }
