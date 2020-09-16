@@ -1,5 +1,5 @@
 /**********************************************
- * Drawing straight Functionality
+ * Drawing Rectangle Functionality
  * ==================================
  ***********************************************/
 // https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/clearRect
@@ -8,7 +8,6 @@ class DrawingRectangle extends PaintFunction {
         super();
         this.contextReal = contextReal;
         this.contextDraft = contextDraft;
-
     }
 
     onMouseDown(coord, event) {

@@ -9,9 +9,7 @@ let canvasDraft = document.getElementById("canvas-draft");
 let contextDraft = canvasDraft.getContext("2d");
 let currentFunction;
 let dragging = false;
-// let mousePos = getMousePos(contextReal, evt);
 let clickNum = 0;
-// size
 let eraser_width;
 
 
@@ -73,15 +71,11 @@ $('#choose-size .radio-group').on('click', function() {
     if (s === '1') {
         contextDraft.lineWidth = 1;
         contextReal.lineWidth = 1;
-        contextDraft.lineJoin = "round";
-        contextReal.lineJoin = "round";
         eraser_width = 1;
     }
     if (s === '2') {
         contextDraft.lineWidth = 6;
         contextReal.lineWidth = 6;
-        contextDraft.lineJoin = "round";
-        contextReal.lineJoin = "round";
         eraser_width = 6;
     }
     if (s === '3') {
