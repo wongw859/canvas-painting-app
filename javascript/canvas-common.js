@@ -49,6 +49,7 @@ $("#canvas-draft").mouseenter(function(e) {
     currentFunction.onMouseEnter([mouseX, mouseY], e);
 });
 
+// Save functionality
 //When save button is clicked, creates a Blob object representing the image contained in the canvas
 /*https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toBlob 
 https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL
