@@ -18,6 +18,18 @@
         <canvas id="canvas-real" class="canvas" width="1280px" height="720px"></canvas>
         <canvas id="canvas-draft" class="canvas" width="1280px" height="720px"></canvas>
     </div>
+    <!-- Picking size button -->
+    <form id="choose-size">
+        <div class="title">Pick size</div>
+        <div class="radio-group">
+            <input type="radio" name="size" value="1" checked="checked">Small</div>
+        <div class="radio-group">
+            <input type="radio" name="size" value="2">Medium</div>
+        <div class="radio-group"><input type="radio" name="size" value="3">Large</div>
+        <div class="radio-group"><input type="radio" name="size" value="4">Extra large</div>
+    </form>
+
+    <!-- Utilities Buttons -->
     <div class="buttons">
         <!-- The drawing rectangle button  -->
         <span class="btn btn-primary fa fa-square" id="drawing-rectangle">Draw Rectangle</span
@@ -47,9 +59,10 @@
         >Save</span
       > 
       <!-- The testing  button -->
-      <span class="btn btn-danger fa fa-paint-brush" id="test"
-        >test</span
-      > 
+      <!-- <span class="btn btn-danger fa fa-paint-brush" id="test"
+        >test</span 
+      >  -->
+     
       <!-- jQuery -->
       <script
       src="https://code.jquery.com/jquery-3.5.1.js"
@@ -118,6 +131,13 @@
       async
       defer
     ></script>
+    <!-- straight lines -->
+    <script
+      src="./javascript/straight-line.js"
+      type="text/javascript"
+      async
+      defer
+    ></script>
     <script type="text/javascript">
     //strategy patterns
     // once clicked, instantiate currentFunction to the respective function
@@ -141,6 +161,10 @@
       $("#quadratic-curves").click(() => {
         currentFunction = new QuadraticCurves(contextReal,contextDraft);
       });  
+      $("#straight-line").click(() => {
+        currentFunction = new StraightLine(contextReal,contextDraft);
+      });  
+
     })
     </script>
   </body>

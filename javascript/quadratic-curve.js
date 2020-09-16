@@ -1,55 +1,73 @@
+// The first and second click is start and end points
+// the third click is control point
+
 class QuadraticCurves extends PaintFunction {
     constructor(contextReal) {
         super();
         this.contextReal = contextReal;
         this.contextDraft = contextDraft;
+        this.canvasReal = canvasReal;
+        this.canvasDraft = canvasDraft;
         this.clickNum = 0;
         this.pointX = [];
         this.pointY = [];
     }
 
     onMouseDown(coord, e) {
-        this.contextDraft.strokeStyle = '#f44';
-        this.contextDraft.fillStyle = '#f44';
-        this.contextDraft.lineWidth = 10;
+        this.contextDraft.strokeStyle = 'none';
+        this.contextDraft.fillStyle = 'none';
+        this.contextDraft.lineWidth = 5;
+        this.contextReal.strokeStyle = 'none';
+        this.contextReal.fillStyle = 'none';
+        this.contextReal.lineWidth = 5;
 
+        // second click is shows control point
         if (this.clickNum === 0) {
             this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
-            this.origX = coord[0];
-            this.origY = coord[1];
-            this.contextReal.fillRect(this.origX, this.origY, 10, 10);
-            this.pointX.push(coord[0]);
-            this.pointY.push(coord[1]);
+            this.origX = coord[0] - this.canvasDraft.getBoundingClientRect().left;
+            this.origY = coord[1] - this.canvasDraft.getBoundingClientRect().top;
+            this.drawPoint(this.origX, this.origY);
+            this.pointX.push(this.origX);
+            this.pointY.push(this.origY);
             this.clickNum++;
-            console.log(this.origX, this.origY);
             drawing = true;
         } else if (this.clickNum === 1) {
-            this.pointX.push(coord[0]);
-            this.pointY.push(coord[1]);
-            this.contextReal.fillRect(this.origX, this.origY, 10, 10);
+            this.origX = coord[0] - this.canvasDraft.getBoundingClientRect().left;
+            this.origY = coord[1] - this.canvasDraft.getBoundingClientRect().top;
+            this.pointX.push(this.origX);
+            this.pointY.push(this.origY);
+            this.drawPoint(this.origX, this.origY);
+            this.drawLine(this.pointX[0], this.pointY[0], this.pointX[1], this.pointY[1], this.contextDraft);
             this.clickNum++;
-            console.log(this.origX, this.origY);
         } else if (this.clickNum === 2) {
-            this.pointX.push(coord[0]);
-            this.pointY.push(coord[1]);
-            this.contextReal.fillRect(this.origX, this.origY, 10, 10);
+            this.origX = coord[0] - this.canvasDraft.getBoundingClientRect().left;
+            this.origY = coord[1] - this.canvasDraft.getBoundingClientRect().top;
+            this.pointX.push(this.origX);
+            this.pointY.push(this.origY);
+            this.drawPoint(this.origX, this.origY);
+            // clear lines
+            this.contextDraft.clearRect(0, 0, this.canvasDraft.width, this.canvasDraft.height)
             this.drawQuadratic(this.pointX[0], this.pointY[0], this.pointX[1], this.pointY[1], this.pointX[2], this.pointY[2], this.contextReal);
             this.pointX = [];
             this.pointY = [];
             this.clickNum = 0;
-            console.log(this.origX, this.origY);
         }
     }
     onDragging() {}
     onMouseMove() {
-        this.contextDraft.strokeStyle = '#f44';
-        this.contextDraft.fillStyle = 'none';
-        this.contextDraft.lineWidth = 10;
 
     }
     onMouseUp() {}
     onMouseLeave() {}
     onMouseEnter() {}
+        //Drawing handle
+    drawLine(x1, y1, x2, y2, context) {
+        context.beginPath();
+        context.moveTo(x1, y1);
+        context.lineTo(x2, y2);
+        context.stroke();
+    }
+
     drawQuadratic(x1, y1, x2, y2, x3, y3, context) {
         context.beginPath();
         context.moveTo(x1, y1);

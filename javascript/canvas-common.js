@@ -9,6 +9,11 @@ let canvasDraft = document.getElementById("canvas-draft");
 let contextDraft = canvasDraft.getContext("2d");
 let currentFunction;
 let dragging = false;
+// let mousePos = getMousePos(contextReal, evt);
+let clickNum = 0;
+// size
+let eraser_width;
+
 
 $("#canvas-draft").mousedown(function(e) {
     let mouseX = e.offsetX;
@@ -62,8 +67,39 @@ $("#save").mousedown(function() {
     });
 })
 
+// change size of linewidths
+$('#choose-size .radio-group').on('click', function() {
+    var s = $('input[name=size]:checked', '#choose-size').val();
+    if (s === '1') {
+        contextDraft.lineWidth = 1;
+        contextReal.lineWidth = 1;
+        contextDraft.lineJoin = "round";
+        contextReal.lineJoin = "round";
+        eraser_width = 1;
+    }
+    if (s === '2') {
+        contextDraft.lineWidth = 6;
+        contextReal.lineWidth = 6;
+        contextDraft.lineJoin = "round";
+        contextReal.lineJoin = "round";
+        eraser_width = 6;
+    }
+    if (s === '3') {
+        contextDraft.lineWidth = 10;
+        contextReal.lineWidth = 10;
+        eraser_width = 10;
+    }
+    if (s === '4') {
+        contextDraft.lineWidth = 20;
+        contextReal.lineWidth = 20;
+        eraser_width = 20;
+    }
+});
+
+
+
 /** # Class (all classes will have these methods) #
-/*  ====================== */
+ /*  ====================== */
 class PaintFunction {
     construct() {}
     onMouseDown() {}
@@ -72,34 +108,43 @@ class PaintFunction {
     onMouseUp() {}
     onMouseLeave() {}
     onMouseEnter() {}
-        // getting length between 2 points
+
+    // getting length between 2 points
     getChordLength(x1, y1, x2, y2, x3, y3) {
-            let diffX01 = x1 - x2;
-            let diffY01 = y1 - y2;
-            let lengthSquare01 = Math.pow(diffX01, 2) + Math.pow(diffY01, 2);
-            let length01 = Math.pow(lengthSquare01, 0.5);
+        let diffX01 = x1 - x2;
+        let diffY01 = y1 - y2;
+        let lengthSquare01 = Math.pow(diffX01, 2) + Math.pow(diffY01, 2);
+        let length01 = Math.pow(lengthSquare01, 0.5);
 
-            if (x3) {
-                let diffX02 = x1 - x3;
-                let diffY02 = y1 - y3;
-                let lengthSquare02 = Math.pow(diffX02, 2) + Math.pow(diffY02, 2);
-                let length02 = Math.pow(lengthSquare02, 0.5);
+        if (x3) {
+            let diffX02 = x1 - x3;
+            let diffY02 = y1 - y3;
+            let lengthSquare02 = Math.pow(diffX02, 2) + Math.pow(diffY02, 2);
+            let length02 = Math.pow(lengthSquare02, 0.5);
 
-                return length01 < length02 ? length01 : length02
-            }
-
-            return length01;
+            return length01 < length02 ? length01 : length02
         }
-        // drawing a st line
-    draw(x, y) {
-        this.context.lineTo(x, y);
-        this.context.moveTo(x, y);
-        this.context.closePath();
-        this.context.stroke();
+
+        return length01;
+    };
+
+
+    // drawing a st line
+    drawLine(x1, y1, x2, y2, context) {
+        context.beginPath();
+        context.moveTo(x1, y1);
+        context.lineTo(x2, y2);
+        context.stroke();
     }
 
-    drawPoint() {
-        this.contextReal.fillRect(this.origX, this.origY, 10, 10);
-    }
+
+    drawPoint(x, y) {
+        this.contextDraft.fillRect(x, y, 20, 20);
+        this.contextDraft.strokeStyle = 'black';
+        this.contextDraft.fillStyle = 'black';
+        this.contextReal.strokeStyle = 'black';
+        this.contextReal.fillStyle = 'black';
+    };
+
 
 }

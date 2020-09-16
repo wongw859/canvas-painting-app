@@ -14,13 +14,13 @@ class DrawingTriangle extends PaintFunction {
 
     onMouseDown() {}
 
-    onDragging() {}
-
+    onDragging() {
+        this.contextDraft.strokeStyle = '#ff0000';
+        this.contextDraft.fillStyle = 'white';
+    }
     onMouseMove(coord, event) {
-        this.contextDraft.strokeStyle = 'none';
-        this.contextDraft.lineJoin = 'miter';
-        this.contextDraft.lineWidth = 10;
-        this.contextDraft.fillStyle = 'none';
+        this.contextDraft.strokeStyle = '#ff0000';
+        this.contextDraft.fillStyle = 'white';
 
         if (this.clickNum != 0 && drawing === false) {
             this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
@@ -32,10 +32,10 @@ class DrawingTriangle extends PaintFunction {
     }
 
     onMouseUp(coord, event) {
-        this.contextDraft.strokeStyle = 'none';
-        this.contextDraft.lineJoin = 'miter';
-        this.contextDraft.lineWidth = 10;
-        this.contextDraft.fillStyle = 'none';
+        this.contextDraft.strokeStyle = '#ff0000';
+        this.contextDraft.fillStyle = 'white';
+        this.contextReal.strokeStyle = '#ff0000';
+        this.contextReal.fillStyle = 'white';
 
         if (this.clickNum === 0) {
             this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
@@ -58,7 +58,7 @@ class DrawingTriangle extends PaintFunction {
         context.beginPath();
         context.moveTo(x, y);
         for (let i = 1; i < sides; i++) {
-            let angle = i * 2 * Math.PI / sides
+            let angle = i * 2 * Math.PI / sides;
             let rotatedX = Math.cos(angle) * (x - this.origX) - Math.sin(angle) * (y - this.origY) + this.origX;
             let rotatedY = Math.sin(angle) * (x - this.origX) + Math.cos(angle) * (y - this.origY) + this.origY;
             context.lineTo(rotatedX, rotatedY);
