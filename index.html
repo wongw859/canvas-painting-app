@@ -135,6 +135,7 @@
 
 
 
+
     <!-- Bootstrap -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -151,6 +152,7 @@
     <!-- iro.js Color Picker JS / realted personal script -->
     <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>  
     <script src="./javascript/color-picker.js"></script>
+
 
 
     <!-- The drawing functionality  -->
@@ -184,6 +186,7 @@
   ></script>
     <!-- Pen effects functionality-->
     <script
+
     src="./javascript/color-pen-effects.js"
     type="text/javascript"
     async
@@ -194,6 +197,7 @@
 
 
     <!-- Inline JS -->
+
     <script type="text/javascript">
 
     // Stretegy pattern
@@ -205,6 +209,20 @@
       $("#drawing-line").click(() => {
         currentFunction = new DrawingLine(contextReal);
       });  
+
+      $("#drawing-triangle").click(() => {
+        currentFunction = new DrawingTriangle(contextReal,contextDraft);
+      });  
+      $("#drawing-circle").click(() => {
+        currentFunction = new DrawingCircle(contextReal,contextDraft);
+      });  
+      $("#bezier-curves").click(() => {
+        currentFunction = new BezierCurves(contextReal,contextDraft);
+      });  
+      $("#quadratic-curves").click(() => {
+        currentFunction = new QuadraticCurves(contextReal,contextDraft);
+      });  
+
     })
 
     </script>
