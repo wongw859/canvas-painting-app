@@ -1,45 +1,158 @@
+
 <!DOCTYPE html>
 <html class="no-js">
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title></title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+   
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+
+    <!-- Private CSS -->
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+   
+  </head>
+  <body>
 
-</head>
+    <div class="main-wrapper">
 
-<body class="container">
-    <h1>Canvas Application</h1>
-    <div id="canvas-container">
-        <canvas id="canvas-real" class="canvas" width="1280px" height="720px"></canvas>
-        <canvas id="canvas-draft" class="canvas" width="1280px" height="720px"></canvas>
+      <!-- top: utility bar -->
+      <div class="utility-bar-wrapper">
+        <h3>Utility bar</h3>
+      </div>
+      
+      <!-- middle: canvas area -->
+      <div class="canvas-wrapper">
+        <!-- Left-hand-side: color picker -->
+        <div class="color-wrapper">
+          <div class="color-container">
+            <h6 class="color-heading text-center">Colors</h6>
+            <div id="picker"></div>
+          </div>
+        </div>
+        
+        <!-- left-hand-side: toolbar -->
+        <div class="toolbar-wrapper">
+          <div class="buttons-wrapper">
+            <h6 class="toolbar-heading text-center">Shape</h6>
+            <div class="shape-box d-flex flex-row flex-wrap">
+              <!-- The drawing square button  -->
+              <div class="button rectangle-button">
+                <a id="drawing-rectangle" href="#"><img class="icon-xs" src="Icons/square.svg"></a>
+              </div>
+    
+              <!-- The drawing circle button  -->
+              <div class="button circle-button">
+                <a id="drawing-rectangle" href="#"><img class="icon-xs" src="Icons/circle.svg"></a>
+              </div>
+    
+              <!-- The drawing rectangle button  -->
+              <div class="button rectangle-button">
+                <a id="drawing-rectangle" href="#"><img class="icon-xs" src="Icons/rectangle.svg"></a>
+              </div>
+    
+              <!-- The drawing triangle button  -->
+              <div class="button triangle-button">
+                <a id="drawing-triangle" href="#"><img class="icon-xs" src="Icons/triangle.svg"></a>
+              </div>
+            </div>
+
+            <h6 class="toolbar-heading text-center">Line</h6>
+            <div class="toolbar-box line-box d-flex flex-row flex-wrap">
+
+              <!-- The drawing line button  -->
+              <div class="button line-button">
+                <a id="drawing-line" href="#"><img class="icon-sm" src="Icons/pencil.svg"></a>
+              </div>
+    
+              <!-- The drawing straight line button  -->
+              <div class="button straight-line-button">
+                <a id="drawing-straight-line" href="#"><img class="icon" src="Icons/dash.svg"></a>
+              </div>
+    
+              <!-- The drawing bezier button  -->
+              <div class="button curve-button">
+                <a id="drawing-curve" href="#"><img class="icon-sm" src="Icons/curve-line.svg"></a>
+              </div>
+              
+    
+              <!-- The drawing bezier button  -->
+              <div class="button bezier-button">
+                <a id="drawing-bezier" href="#"><img class="icon-sm" src="Icons/bezier.svg"></a>
+              </div>
+              
+            </div>
+
+
+
+            
+          </div>
+        </div>
+    
+
+
+        <!-- canvas -->
+        <div class="canvas">
+          <div class="canvas-container">
+            <div class="canvas-background"></div>
+            <canvas
+              id="canvas-real"
+              class="canvas"
+              width="1024px"
+              height="800px"
+            ></canvas>
+            <canvas
+              id="canvas-draft"
+              class="canvas"
+              width="1024px"
+              height="800px"
+            ></canvas>
+          </div>    
+        </div>
+
+        <!-- Right-hand-side: Empty div  -->
+        <div class="empty-wrapper"></div>
+      </div>
+
+      <!-- Option bar -->
+      <div class="option-wrapper">
+        <div class="options-container">
+          <h6 class="options-heading text-left">Options</h6>
+        </div>
+      </div>
     </div>
-    <div class="buttons">
-        <!-- The drawing rectangle button  -->
-        <span class="btn btn-primary fa fa-square" id="drawing-rectangle">Draw Rectangle</span
-      >
-      <!-- The drawing line button  -->
-      <span class="btn btn-info fa fa-paint-brush" id="drawing-line"
-        >Draw Line</span
-      > 
-      <!-- The drawing traiangle button -->
-      <span class="btn btn-warning fa fa-paint-brush" id="drawing-triangle"
-        >Draw Triangle</span
-      > 
-      <!-- The drawing circle button -->
-      <span class="btn btn-danger fa fa-paint-brush" id="drawing-circle"
-        >Draw Circle</span
-      > 
-      <!-- jQuery -->
-      <script
-      src="https://code.jquery.com/jquery-3.5.1.js"
-      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-      crossorigin="anonymous"
-    ></script>
+
+
+
+
+    <!-- Bootstrap -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+    </script> 
+
+    <!-- iro.js Color Picker JS / realted personal script -->
+    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>  
+    <script src="./javascript/color-picker.js"></script>
+
+
     <!-- The drawing functionality  -->
     <script
       src="./javascript/canvas-common.js"
@@ -62,23 +175,28 @@
       async
       defer
     ></script>
-    <!-- the drawing triangle functionality -->
+    <!-- Color filters functionality-->
     <script
-      src="./javascript/drawing-triangle.js"
-      type="text/javascript"
-      async
-      defer
-    ></script>
-    <!-- the drawing circle functionality -->
+    src="./javascript/color-filters.js"
+    type="text/javascript"
+    async
+    defer
+  ></script>
+    <!-- Pen effects functionality-->
     <script
-      src="./javascript/drawing-circle.js"
-      type="text/javascript"
-      async
-      defer
-    ></script>
+    src="./javascript/color-pen-effects.js"
+    type="text/javascript"
+    async
+    defer
+  ></script>
+
+    
+
+
+    <!-- Inline JS -->
     <script type="text/javascript">
-    //strategy patterns
-    // once clicked, instantiate currentFunction to the respective function
+
+    // Stretegy pattern
     $(()=>{
       currentFunction =  new DrawingLine(contextReal)
       $("#drawing-rectangle").click(() => {
@@ -87,13 +205,8 @@
       $("#drawing-line").click(() => {
         currentFunction = new DrawingLine(contextReal);
       });  
-      $("#drawing-triangle").click(() => {
-        currentFunction = new DrawingTriangle(contextReal);
-      });  
-      $("#drawing-circle").click(() => {
-        currentFunction = new DrawingCircle(contextReal);
-      });  
     })
+
     </script>
   </body>
 </html>
