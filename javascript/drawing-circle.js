@@ -40,6 +40,7 @@ class DrawingCircle extends PaintFunction {
             this.drawCircle(coord[0], coord[1], this.contextReal);
             this.clickNum = 0;
         }
+        saveState();
     }
 
     onMouseLeave() {}

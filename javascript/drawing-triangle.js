@@ -48,6 +48,7 @@ class DrawingTriangle extends PaintFunction {
             this.draw(coord[0], coord[1], 3, this.contextReal);
             this.clickNum = 0
         }
+        saveState();
     }
 
     onMouseLeave() {}
