@@ -170,6 +170,13 @@
       async
       defer
     ></script>
+    <!-- The drawing straight-line functionality  -->
+    <script 
+    src="./javascript/drawing-straight-line.js" 
+    type="text/javascript" 
+    async 
+    defer
+    ></script>
     <!-- The drawing rectangle functionality  -->
     <script
       src="./javascript/drawing-rectangle.js"
@@ -192,6 +199,28 @@
     async
     defer
   ></script>
+    <!-- The eraser functionality  -->
+    <script 
+    src="./javascript/eraser.js" 
+    type="text/javascript" 
+    async 
+    defer
+    ></script>
+    <!-- The add text functionality  -->
+    <script 
+    src="./javascript/add-text.js" 
+    type="text/javascript" 
+    async 
+    defer
+    ></script>
+    <!-- The Undo & Redo functionality  -->
+    <script 
+    src="./javascript/undo-redo.js" 
+    type="text/javascript" 
+    async 
+    defer
+    ></script>
+
 
     
 
@@ -222,6 +251,33 @@
       $("#quadratic-curves").click(() => {
         currentFunction = new QuadraticCurves(contextReal,contextDraft);
       });  
+      $("#drawing-straight-line").click(() => {
+          currentFunction = new DrawingStraightLine(contextReal, contextDraft);
+        });        
+
+      $("#clear").click(function () {
+          if (confirm("Confirm to clear canvas?")) {
+            var canvas = document.getElementById('canvas-real');
+            var ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+          }
+      });
+
+      $("#eraser").click(function () {
+          currentFunction = new DrawingEraser(contextReal);
+      });
+
+      $("#text").click(function () {
+          currentFunction = new AddText2(contextReal);
+      });
+
+      $("#undo").click(function () {
+          undo();
+      });
+
+      $("#redo").click(function () {
+          redo();
+      })
 
     })
 
