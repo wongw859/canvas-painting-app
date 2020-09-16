@@ -1,4 +1,4 @@
-drawing = false; // add to variables folder?
+drawing = false; // add to variables folder
 
 class DrawingCircle extends PaintFunction {
     constructor(contextReal) {
@@ -13,8 +13,7 @@ class DrawingCircle extends PaintFunction {
 
     onMouseMove(coord, event) {
         this.contextDraft.strokeStyle = '#f44';
-        this.contextDraft.fillStyle = 'none';
-        this.contextDraft.lineWidth = 10;
+        this.contextDraft.fillStyle = 'white';
 
         if (this.clickNum != 0 && drawing === false) {
             this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
@@ -26,8 +25,9 @@ class DrawingCircle extends PaintFunction {
     }
     onMouseUp(coord, event) {
         this.contextDraft.strokeStyle = '#f44';
-        this.contextDraft.fillStyle = '#f44';
-        this.contextDraft.lineWidth = 10;
+        this.contextDraft.fillStyle = 'white';
+        this.contextReal.strokeStyle = '#f44';
+        this.contextReal.fillStyle = 'white';
 
         if (this.clickNum === 0) {
             this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);

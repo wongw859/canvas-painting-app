@@ -91,11 +91,7 @@
                 <a id="drawing-bezier" href="#"><img class="icon-sm" src="Icons/bezier.svg"></a>
               </div>
               
-            </div>
-
-
-
-            
+            </div>  
           </div>
         </div>
     
@@ -132,10 +128,47 @@
       </div>
     </div>
 
+    <!-- Picking size button -->
+    <form id="choose-size">
+        <div class="title">Pick size</div>
+        <div class="radio-group">
+            <input type="radio" name="size" value="1" checked="checked">Small</div>
+        <div class="radio-group">
+            <input type="radio" name="size" value="2">Medium</div>
+        <div class="radio-group"><input type="radio" name="size" value="3">Large</div>
+        <div class="radio-group"><input type="radio" name="size" value="4">Extra large</div>
+    </form>
 
-
-
-
+    <!-- Utilities Buttons -->
+    <div class="buttons">
+        <!-- The drawing rectangle button  -->
+        <span class="btn btn-primary fa fa-square" id="drawing-rectangle">Draw Rectangle</span
+      >
+      <!-- The drawing line button  -->
+      <span class="btn btn-info fa fa-paint-brush" id="drawing-line"
+        >Draw Line</span
+      > 
+      <!-- The drawing traiangle button -->
+      <span class="btn btn-warning fa fa-paint-brush" id="drawing-triangle"
+        >Draw Triangle</span
+      > 
+      <!-- The drawing circle button -->
+      <span class="btn btn-danger fa fa-paint-brush" id="drawing-circle"
+        >Draw Circle</span
+      > 
+      <!-- The drawing Bezier Curves button -->
+      <span class="btn btn-danger fa fa-paint-brush" id="bezier-curves"
+        >Draw Bezier curves</span
+      >   
+      <!-- The drawing Quadratic Curves button -->
+      <span class="btn btn-danger fa fa-paint-brush" id="quadratic-curves"
+        >Draw Quadratic curves</span
+      > 
+      <!-- The save button -->
+      <span class="btn btn-danger fa fa-paint-brush" id="save"
+        >Save</span
+      > 
+  
     <!-- Bootstrap -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -221,10 +254,6 @@
     defer
     ></script>
 
-
-    
-
-
     <!-- Inline JS -->
 
     <script type="text/javascript">
@@ -251,6 +280,7 @@
       $("#quadratic-curves").click(() => {
         currentFunction = new QuadraticCurves(contextReal,contextDraft);
       });  
+
       $("#drawing-straight-line").click(() => {
           currentFunction = new DrawingStraightLine(contextReal, contextDraft);
         });        
