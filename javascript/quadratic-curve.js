@@ -60,7 +60,6 @@ class QuadraticCurves extends PaintFunction {
     onMouseUp() {}
     onMouseLeave() {}
     onMouseEnter() {}
-        //Drawing handle
     drawLine(x1, y1, x2, y2, context) {
         context.beginPath();
         context.moveTo(x1, y1);

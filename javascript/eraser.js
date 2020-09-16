@@ -1,8 +1,8 @@
 class DrawingEraser extends PaintFunction {
     /**********************************************
-    * Drawing Eraser Functionality
-    * ==================================
-    ***********************************************/
+     * Drawing Eraser Functionality
+     * ==================================
+     ***********************************************/
 
     // This class extends the PaintFunction class
     constructor(contextReal) {
@@ -20,15 +20,15 @@ class DrawingEraser extends PaintFunction {
         this.draw(coord[0], coord[1]);
     }
 
-    onMouseMove() { }
+    onMouseMove() {}
     onMouseUp() {
         saveState();
     }
-    onMouseLeave() { }
-    onMouseEnter() { }
+    onMouseLeave() {}
+    onMouseEnter() {}
 
     draw(x, y) {
-        this.context.arc(x, y, 50, 0, 2 * Math.PI);
+        this.context.arc(x, y, this.eraser_width, 0, 2 * Math.PI);
         this.context.fill();
         this.context.closePath();
     }
