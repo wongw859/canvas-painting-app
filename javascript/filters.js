@@ -13,6 +13,8 @@ $(function() {
         }
     
         contextReal.putImageData(drawingData, 0, 0);
+        saveState();
+
     })
     
     // Greyscale
@@ -27,6 +29,8 @@ $(function() {
         } 
     
         contextReal.putImageData(drawingData, 0, 0);
+        saveState();
+
     })
 
     // Brightness
@@ -34,7 +38,7 @@ $(function() {
         // + button
         $("#brightness-bright").on("click",function (e) {
             var drawingData = contextReal.getImageData(0, 0, canvasReal.width, canvasReal.height);
-            let adj = 10;
+            let adj = 15;
             // Algorithm
             var d = drawingData.data;
             for (var i = 0; i < d.length; i += 4) {
@@ -43,11 +47,13 @@ $(function() {
                 d[i + 2] += adj;
             }
             contextReal.putImageData(drawingData, 0, 0);
+            saveState();
+
         })
         // - button
         $("#brightness-dim").on("click",function (e) {
             var drawingData = contextReal.getImageData(0, 0, canvasReal.width, canvasReal.height);
-            let adj = -10;
+            let adj = -15;
             // Algorithm
             var d = drawingData.data;
             for (var i = 0; i < d.length; i += 4) {
@@ -56,6 +62,8 @@ $(function() {
                 d[i + 2] += adj;
             }
             contextReal.putImageData(drawingData, 0, 0);
+            saveState();
+
         })
 
 

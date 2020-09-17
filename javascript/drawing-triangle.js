@@ -15,12 +15,18 @@ class DrawingTriangle extends PaintFunction {
     onMouseDown() {}
 
     onDragging() {
-        this.contextDraft.strokeStyle = '#ff0000';
-        this.contextDraft.fillStyle = 'white';
+        this.contextDraft.strokeStyle = colorPicker.colors[0].hexString;
+        this.contextDraft.fillStyle = colorPicker.colors[1].hexString;
+        this.contextDraft.lineWidth = $('#pen-width').val();
+        this.contextReal.lineWidth = $('#pen-width').val();
+
     }
     onMouseMove(coord, event) {
-        this.contextDraft.strokeStyle = '#ff0000';
-        this.contextDraft.fillStyle = 'white';
+        this.contextDraft.strokeStyle = colorPicker.colors[0].hexString;
+        this.contextDraft.fillStyle = colorPicker.colors[1].hexString;
+        this.contextDraft.lineWidth = $('#pen-width').val();
+        this.contextReal.lineWidth = $('#pen-width').val();
+
 
         if (this.clickNum != 0 && drawing === false) {
             this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
@@ -32,10 +38,13 @@ class DrawingTriangle extends PaintFunction {
     }
 
     onMouseUp(coord, event) {
-        this.contextDraft.strokeStyle = '#ff0000';
-        this.contextDraft.fillStyle = 'white';
-        this.contextReal.strokeStyle = '#ff0000';
-        this.contextReal.fillStyle = 'white';
+        this.contextDraft.strokeStyle = colorPicker.colors[0].hexString;
+        this.contextDraft.fillStyle = colorPicker.colors[1].hexString;
+        this.contextReal.strokeStyle = colorPicker.colors[0].hexString;
+        this.contextReal.fillStyle = colorPicker.colors[1].hexString;
+        this.contextDraft.lineWidth = $('#pen-width').val();
+        this.contextReal.lineWidth = $('#pen-width').val();
+
 
         if (this.clickNum === 0) {
             this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);

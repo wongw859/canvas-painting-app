@@ -14,34 +14,35 @@ class QuadraticCurves extends PaintFunction {
     }
 
     onMouseDown(coord, e) {
-        this.contextDraft.strokeStyle = 'none';
-        this.contextDraft.fillStyle = 'none';
-        this.contextDraft.lineWidth = 5;
-        this.contextReal.strokeStyle = 'none';
-        this.contextReal.fillStyle = 'none';
-        this.contextReal.lineWidth = 5;
+        this.contextDraft.strokeStyle = colorPicker.colors[0].hexString;
+        this.contextDraft.fillStyle = colorPicker.colors[0].hexString;
+        this.contextDraft.lineWidth = $('#pen-width').val();
+        this.contextReal.strokeStyle = colorPicker.colors[0].hexString;
+        this.contextReal.fillStyle = colorPicker.colors[0].hexString;
+        this.contextReal.lineWidth = $('#pen-width').val();
 
         // second click is shows control point
         if (this.clickNum === 0) {
             this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
-            this.origX = coord[0] - this.canvasDraft.getBoundingClientRect().left;
-            this.origY = coord[1] - this.canvasDraft.getBoundingClientRect().top;
+            this.origX = coord[0];
+            this.origY = coord[1];
             this.drawPoint(this.origX, this.origY);
             this.pointX.push(this.origX);
             this.pointY.push(this.origY);
             this.clickNum++;
             drawing = true;
         } else if (this.clickNum === 1) {
-            this.origX = coord[0] - this.canvasDraft.getBoundingClientRect().left;
-            this.origY = coord[1] - this.canvasDraft.getBoundingClientRect().top;
+            this.origX = coord[0];
+            this.origY = coord[1];
             this.pointX.push(this.origX);
             this.pointY.push(this.origY);
             this.drawPoint(this.origX, this.origY);
             this.drawLine(this.pointX[0], this.pointY[0], this.pointX[1], this.pointY[1], this.contextDraft);
             this.clickNum++;
         } else if (this.clickNum === 2) {
-            this.origX = coord[0] - this.canvasDraft.getBoundingClientRect().left;
-            this.origY = coord[1] - this.canvasDraft.getBoundingClientRect().top;
+            this.contextDraft.clearRect(0, 0, this.canvasDraft.width, this.canvasDraft.height)
+            this.origX = coord[0];
+            this.origY = coord[1];
             this.pointX.push(this.origX);
             this.pointY.push(this.origY);
             this.drawPoint(this.origX, this.origY);
@@ -51,6 +52,8 @@ class QuadraticCurves extends PaintFunction {
             this.pointX = [];
             this.pointY = [];
             this.clickNum = 0;
+            saveState();
+
         }
     }
     onDragging() {}
@@ -61,6 +64,13 @@ class QuadraticCurves extends PaintFunction {
     onMouseLeave() {}
     onMouseEnter() {}
     drawLine(x1, y1, x2, y2, context) {
+        this.contextDraft.strokeStyle = colorPicker.colors[0].hexString;
+        this.contextDraft.fillStyle = colorPicker.colors[0].hexString;
+        this.contextDraft.lineWidth = $('#pen-width').val();
+        this.contextReal.strokeStyle = colorPicker.colors[0].hexString;
+        this.contextReal.fillStyle = colorPicker.colors[0].hexString;
+        this.contextReal.lineWidth = $('#pen-width').val();
+
         context.beginPath();
         context.moveTo(x1, y1);
         context.lineTo(x2, y2);
@@ -68,6 +78,13 @@ class QuadraticCurves extends PaintFunction {
     }
 
     drawQuadratic(x1, y1, x2, y2, x3, y3, context) {
+        this.contextDraft.strokeStyle = colorPicker.colors[0].hexString;
+        this.contextDraft.fillStyle = colorPicker.colors[0].hexString;
+        this.contextDraft.lineWidth = $('#pen-width').val();
+        this.contextReal.strokeStyle = colorPicker.colors[0].hexString;
+        this.contextReal.fillStyle = colorPicker.colors[0].hexString;
+        this.contextReal.lineWidth = $('#pen-width').val();
+
         context.beginPath();
         context.moveTo(x1, y1);
         context.quadraticCurveTo(x2, y2, x3, y3);

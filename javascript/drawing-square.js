@@ -3,7 +3,7 @@
  * ==================================
  ***********************************************/
 // https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/clearRect
-class DrawingRectangle extends PaintFunction {
+class DrawingSquare extends PaintFunction {
     constructor(contextReal, contextDraft) {
         super();
         this.contextReal = contextReal;
@@ -27,13 +27,13 @@ class DrawingRectangle extends PaintFunction {
             this.origX,
             this.origY,
             coord[0] - this.origX,
-            coord[1] - this.origY
+            coord[0] - this.origX,
         );
         this.contextDraft.strokeRect(
             this.origX,
             this.origY,
             coord[0] - this.origX,
-            coord[1] - this.origY
+            coord[0] - this.origX
 
         )
     }
@@ -46,13 +46,15 @@ class DrawingRectangle extends PaintFunction {
             this.origX,
             this.origY,
             coord[0] - this.origX,
-            coord[1] - this.origY
+            coord[0] - this.origX,
+
         );
         this.contextReal.strokeRect(
             this.origX,
             this.origY,
             coord[0] - this.origX,
-            coord[1] - this.origY
+            coord[0] - this.origX,
+
         )
         saveState();
 

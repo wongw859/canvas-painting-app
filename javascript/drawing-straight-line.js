@@ -14,6 +14,12 @@ class DrawingStraightLine extends PaintFunction {
   onMouseDown(coord, event) {
     this.origX = coord[0];
     this.origY = coord[1];
+    this.contextDraft.lineWidth = $('#pen-width').val();
+    this.contextReal.lineWidth = $('#pen-width').val();
+    this.contextDraft.strokeStyle = colorPicker.colors[0].hexString;
+    this.contextReal.strokeStyle = colorPicker.colors[0].hexString;
+
+
   }
   onDragging(coord, event) {
     this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
