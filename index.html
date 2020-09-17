@@ -31,7 +31,7 @@
         <div class="utility-container d-flex flex-row flex-wrap">
           <!-- Title -->
           <div class="title">
-            <h3>Canvashop</h3>
+            <h3>Canvas++</h3>
           </div>
 
           <!-- The save button  -->
@@ -75,14 +75,13 @@
             </div>
           </div>
 
-          <!-- Hidden element -->
+        <!-- Hidden element -->
           <!-- Brightness control -->
           <div class="brightness-container">
             <div class="brightness-range">
               <a id="brightness-icon" href="#"><img class="icon-sm" src="Icons/brightness.svg"></a>
-              <label for="brightness">-20</label>
-              <input type="range" name="brightness" id="brightness" min="-20" max="20">
-              <label for="brightness">+20</label>
+              <input type="button" name="brightness-bright" id="brightness-bright" value="+">
+              <input type="button" name="brightness-dim" id="brightness-dim" value="-">
             </div>
           </div>
 
@@ -97,11 +96,31 @@
                 </select> 
               </div>
               <div class="font-size-box">
-                <a id="font-size-icon" href="#"><img class="sicon" src="Icons/font-size.svg"></a>
-                <input type="range" name="font-size" id="font-size" min="10" max="60">  
+                <a id="font-size-icon" href="#"><img class="icon" src="Icons/font-size.svg"></a>
+                <input type="range" name="font-size" id="font-size" min="10" max="60" value="12">  
               </div>
             </div>
           </div>
+          <!-- Blur control -->
+          <div class="blur-container">
+            <div class="blur-range">
+              <a id="blur-icon" href="#"><img class="icon-sm" src="Icons/blur.svg"></a>
+              <label for="blur">1</label>
+              <input type="range" name="blur" id="blur" min="1" max="20" value="2">
+              <label for="blur">20</label>
+            </div>
+          </div>
+          <!-- Shadow control -->
+          <div class="shadow-container">
+            <div class="shadow-range">
+              <a id="shadow-icon" href="#"><img class="icon-sm" src="Icons/shadow.svg"></a>
+              <label for="shadow">1</label>
+              <input type="range" name="shadow" id="shadow" min="1" max="20" value="2">
+              <label for="shadow">20</label>
+            </div>
+          </div>
+          
+          
 
           
         </div>
@@ -114,14 +133,16 @@
           <div class="color-container">
             <h6 class="heading text-center">Colors(HSV)</h6>
             <div id="picker"></div>
-            <div class="color-sample row justify-content-center">
-              <div class="primary-color-box col text-center">
-                <h6>Primary</h6>
-                <div class="primary-color "> </div>  
+            <div class="color-sample d-flex justify-content-center">
+              <div class="primary-color-box">
+                <div class="primary-color ">
+                  <h6 class="color-number">1</h6>
+                </div>  
               </div>
-              <div class="secondary-color-box col">
-                <h6>Secondary</h6>
-                <div class="secondary-color"> </div>
+              <div class="secondary-color-box">
+                <div class="secondary-color">
+                  <h6 class="color-number">2</h6>
+                </div>
               </div>
 
             </div>
@@ -134,7 +155,7 @@
 
             <!-- Object part -->
             <h6 class="heading text-center">Object</h6>
-            <div class="toolbar-box d-flex flex-row flex-wrap">
+            <div class="toolbar-box object-box d-flex flex-row flex-wrap">
               <!-- The drawing square button  -->
               <div class="button rectangle-button">
                 <a id="drawing-rectangle" href="#"><img class="icon-xs" src="Icons/square.svg"></a>
@@ -154,7 +175,7 @@
               <div class="button triangle-button">
                 <a id="drawing-triangle" href="#"><img class="icon-xs" src="Icons/triangle.svg"></a>
               </div>
-              <!-- The addign text button  -->
+              <!-- The adding text button  -->
               <div class="button text-button">
                 <a id="drawing-text" href="#"><img class="icon-xs" src="Icons/text.svg"></a>
               </div>
@@ -196,16 +217,16 @@
 
             <!-- Pen effects -->
             <h6 class="heading text-center">Pen Effect</h6>
-            <div class="toolbar-box line-box d-flex flex-row flex-wrap">
+            <div class="toolbar-box pen-effect-box d-flex flex-row flex-wrap">
 
               <!-- The blur effect button  -->
               <div class="button blur-button">
-                <a id="blur" href="#"><img class="icon-xs" src="Icons/blur.svg"></a>
+                <a id="effect-blur" href="#"><img class="icon-xs" src="Icons/blur.svg"></a>
               </div>
     
               <!-- The drop shadow filter button  -->
               <div class="button shadow-button">
-                <a id="shadow" href="#"><img class="icon-sm" src="Icons/shadow.svg"></a>
+                <a id="effect-shadow" href="#"><img class="icon-sm" src="Icons/shadow.svg"></a>
               </div>
     
               <!-- The reset button  -->
@@ -217,8 +238,8 @@
 
 
             <!-- Filter part -->
-            <h6 class="heading text-center">Filters</h6>
-            <div class="toolbar-box line-box d-flex flex-row flex-wrap">
+            <h6 class="heading text-center">Filter</h6>
+            <div class="toolbar-box filter-box d-flex flex-row flex-wrap">
 
               <!-- The invert color filter button  -->
               <div class="button invert-color-button">
@@ -227,7 +248,7 @@
     
               <!-- The greyscale filter button  -->
               <div class="button greyscale-button">
-                <a id="filter-greyscale" href="#"><img class="icon-sm" src="Icons/greyscale.svg"></a>
+                <a id="filter-greyscale" href="#"><img class="icon-xs" src="Icons/greyscale.svg"></a>
               </div>
     
               <!-- The brightness button  -->
@@ -422,7 +443,6 @@
 
       // Stretegy pattern
       $(()=>{
-        currentFunction = new DrawingLine(contextReal)
         $("#drawing-rectangle").click(() => {
           currentFunction = new DrawingRectangle(contextReal, contextDraft);
         });
@@ -470,6 +490,20 @@
         $("#redo").click(function() {
           redo();
         })
+
+        $("#zoom-in").click(function() {
+          currentFunction = new Zoom(contextReal, canvasReal);
+          zooming = true;
+        });
+        $("#zoom-out").click(function() {
+          currentFunction = new Zoom(contextReal, canvasReal);
+          zooming = false;
+
+        });
+        $("#move").click(function() {
+          currentFunction = new Move(contextReal, canvasReal);
+        });
+
       })
 
     </script>

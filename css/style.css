@@ -76,10 +76,16 @@ body {
   margin: 0px 5px 0;
   border: 2px black solid;
   border-radius: 0;
+  transition: background-color 0.25s ease;
+
 }
 
 .save-button, .step-button-group, .zoom-button-group, .move-button {
   margin-right: 35px;
+}
+
+.save-button {
+  margin-left: 40px;
 }
 
 .pen-width-container {
@@ -114,28 +120,29 @@ margin: auto 20px;
 
 /* Hidden element in utility bar */
 
-.brightness-container, .font-container {
+.brightness-container, .font-container, .blur-container, .shadow-container {
   border: 2px black solid;
   height: 50px;
+  margin-right: 35px;
   display: none;
 }
 
-.brightness-range {
+.brightness-range, .blur-range, .shadow-range {
   margin: 2px 0;
 }
 
-.brightness-range > label {
+.blur-range > label, .shadow-range > label {
   margin: 0 10px;
   vertical-align: middle;
 
 }
 
-#brightness-icon, #font-icon, #font-size-icon {
+#brightness-icon, #font-icon, #font-size-icon, #blur-icon, #shadow-icon {
   display: inline-block;
   vertical-align: middle;
 }
 
-#brightness, #font, #font-size {
+#brightness-bright, #brightness-dim, #font, #font-size, #blur, #shadow {
   vertical-align: middle;
   display: inline-block;
   margin: 0 10px;
@@ -168,6 +175,7 @@ margin: auto 20px;
 .color-sample {
   margin-left: 20px;
   margin-right: 20px;
+  margin-top: 50px
 }
 
 .primary-color {
@@ -176,6 +184,9 @@ margin: auto 20px;
   height: 50px;
   border: 2px black solid;
   margin: 0 auto;
+  position: relative;
+  left: 10px;
+  z-index: 10;
 }
 
 .secondary-color {
@@ -184,9 +195,17 @@ margin: auto 20px;
   height: 50px;
   border: 2px black solid;
   margin: 0 auto;
+  position: relative;
+  right: 10px;
+  top: 30px;
 
 }
 
+.color-number {
+  text-align: right;
+  margin-right: 5px;
+  margin-top: 5px;
+}
 
 
 
@@ -211,6 +230,7 @@ margin: auto 20px;
   margin: 0px 5px 10px;
   border: 2px black solid;
   border-radius: 1pc;
+  transition: background-color 0.25s ease;
 }
 
 
@@ -257,3 +277,4 @@ margin: auto 20px;
 .empty-wrapper {
   border-left: 2px black solid;;
 }
+

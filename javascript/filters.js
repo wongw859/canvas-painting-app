@@ -1,7 +1,7 @@
 $(function() {
 
     // Invert color
-    $("#filter1").click(() => {
+    $(".invert-color-button").click(() => {
         var drawingData = contextReal.getImageData(0, 0, canvasReal.width, canvasReal.height);
 
         // Algorithm
@@ -16,7 +16,7 @@ $(function() {
     })
     
     // Greyscale
-    $("#filter2").click(() => {
+    $(".greyscale-button").click(() => {
         var drawingData = contextReal.getImageData(0, 0, canvasReal.width, canvasReal.height);
 
         // Algorithm        
@@ -30,19 +30,35 @@ $(function() {
     })
 
     // Brightness
-    $("#filter3").click(() => {
-        var drawingData = contextReal.getImageData(0, 0, canvasReal.width, canvasReal.height);
+    $(".brightness-button").click(() => {
+        // + button
+        $("#brightness-bright").on("click",function (e) {
+            var drawingData = contextReal.getImageData(0, 0, canvasReal.width, canvasReal.height);
+            let adj = 10;
+            // Algorithm
+            var d = drawingData.data;
+            for (var i = 0; i < d.length; i += 4) {
+                d[i] += adj;
+                d[i + 1] += adj;
+                d[i + 2] += adj;
+            }
+            contextReal.putImageData(drawingData, 0, 0);
+        })
+        // - button
+        $("#brightness-dim").on("click",function (e) {
+            var drawingData = contextReal.getImageData(0, 0, canvasReal.width, canvasReal.height);
+            let adj = -10;
+            // Algorithm
+            var d = drawingData.data;
+            for (var i = 0; i < d.length; i += 4) {
+                d[i] += adj;
+                d[i + 1] += adj;
+                d[i + 2] += adj;
+            }
+            contextReal.putImageData(drawingData, 0, 0);
+        })
 
-        let adj = 10;
 
-        // Algorithm
-        var d = drawingData.data;
-        for (var i = 0; i < d.length; i += 4) {
-        d[i] += adj;
-        d[i + 1] += adj;
-        d[i + 2] += adj;
-        }
-        contextReal.putImageData(drawingData, 0, 0);
     })
 
 })

@@ -28,26 +28,27 @@ class Zoom extends PaintFunction {
     
     onMouseMove(event) {
         if (zooming) {
-            $('#canvas-container').css({ "cursor": "zoom-in" });
+            $('.canvas-container').css({ "cursor": "zoom-in" });
         } else {
-            $('#canvas-container').css({ "cursor": "zoom-out" });
+            $('.canvas-container').css({ "cursor": "zoom-out" });
         };
     }
     onMouseUp(event) {
         if (zooming) {
-            $('#canvas-container').css({ "cursor": "zoom-in" });
+            $('.canvas-container').css({ "cursor": "zoom-in" });
         } else {
-            $('#canvas-container').css({ "cursor": "zoom-out" });
+            $('.canvas-container').css({ "cursor": "zoom-out" });
         };
     }
     onMouseLeave(event) {
-        $('#canvas-container').css({ "cursor": "default"});
+        $('.canvas-container').css({ "cursor": "default"});
     }
     onMouseEnter() {}
 
     draw(scale){
-        this.context.clearRect(0, 0, this.width, this.height);
         this.context.save();
+
+        this.context.clearRect(0, 0, this.width, this.height);
         this.context.scale(scale, scale);
         this.context.translate(0, 0);
         this.context.drawImage(this.img, 0, 0);
@@ -63,7 +64,7 @@ class Zoom extends PaintFunction {
 
 
 
-// $("#filter4").click(() => {
+// $(".filter4").click(() => {
 //     var drawingData = contextReal.getImageData(0, 0, canvasReal.width, canvasReal.height);
 
 //     drawingData.scale(1.25, 1.25);
