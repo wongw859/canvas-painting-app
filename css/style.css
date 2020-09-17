@@ -5,6 +5,7 @@ html {
 
 body {
   overflow: hidden;
+
 }
 
 .main-wrapper {
@@ -16,53 +17,10 @@ body {
 
 .canvas-wrapper {
   display: grid;
-  grid-template-columns: 248px minmax(62px, 124px) 1fr 1fr; 
+  grid-template-columns: 248px 124px 1fr 1fr; 
 }
 
-
-/* options bar */
-.utility-bar-wrapper {
-  height: 50px;
-  border-bottom: 2px black solid;
-
-}
-
-/* Color palette */
-.color-wrapper {
-  border-right: 2px black solid;
-  
-}
-
-.color-container {
-  margin-top: 1rem;
-
-}
-
-
-
-/* toolbar */
-
-.toolbar-wrapper {
-  border-right: 2px black solid;
-  
-}
-
-.buttons-wrapper {
-  margin-top: 1rem;
-}
-
-.shape-box {
-  margin-bottom: 1rem;
-}
-
-.button {
-  width: 50px;
-  height: 50px;
-  margin: 0px 5px 10px;
-  border: 2px black solid;
-  border-radius: 1pc;
-}
-
+/* Icon size */
 .icon {
   display: block;
   width: 36px;
@@ -84,6 +42,170 @@ body {
   margin: 10px;
 }
 
+.icon-xs2 {
+  display: block;
+  width: 22px;
+  height: 22px;
+  margin: 12px;
+}
+
+.icon-xs3 {
+  display: block;
+  width: 18px;
+  height: 18px;
+  margin: 14px;
+}
+
+.icon-xs4 {
+  display: block;
+  width: 14px;
+  height: 14px;
+  margin: 16px;
+}
+
+
+/* utility bar */
+.utility-bar-wrapper {
+  padding: 10px;
+  border-bottom: 2px black solid;
+}
+
+.utility-button {
+  width: 50px;
+  height: 50px;
+  margin: 0px 5px 0;
+  border: 2px black solid;
+  border-radius: 0;
+}
+
+.save-button, .step-button-group, .zoom-button-group, .move-button {
+  margin-right: 35px;
+}
+
+.pen-width-container {
+  height: 50px;
+  margin-right: 35px;
+  border: 2px black solid;
+}
+
+.pen-width-range {
+  margin: 2px 0;
+}
+
+#dot {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#pen-width {
+  margin: 0 10px;
+  vertical-align: middle;
+  display: inline-block;
+
+}
+
+.title {
+margin: auto 20px;
+}
+
+.title > h3 {
+  margin-bottom: 0;
+}
+
+/* Hidden element in utility bar */
+
+.brightness-container {
+  border: 2px black solid;
+  height: 50px;
+  visibility: hidden;
+}
+
+.brightness-range {
+  margin: 2px 0;
+}
+
+.brightness-range > label {
+  margin: 0 10px;
+  vertical-align: middle;
+
+}
+
+#brightness-icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#brightness {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+
+
+
+/* Color palette */
+.color-wrapper {
+  border-right: 2px black solid;
+  
+}
+
+.color-container {
+  margin-top: 1rem;
+}
+
+#picker {
+  margin: 20px 23px;
+}
+
+.color-sample {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.primary-color {
+  background-color: rgb(255, 0, 0);
+  width: 50px;
+  height: 50px;
+  border: 2px black solid;
+  margin-bottom: 20px;
+}
+
+.secondary-color {
+  background-color: rgb(0, 255, 0);
+  width: 50px;
+  height: 50px;
+  border: 2px black solid;
+
+}
+
+
+
+
+/* toolbar */
+
+.toolbar-wrapper {
+  border-right: 2px black solid;
+  
+}
+
+.buttons-wrapper {
+  margin-top: 1rem;
+}
+
+.toolbar-box {
+  margin-bottom: 1rem;
+}
+
+.button {
+  width: 50px;
+  height: 50px;
+  margin: 0px 5px 10px;
+  border: 2px black solid;
+  border-radius: 1pc;
+}
+
+
+
 
 /* canvas */
 
@@ -93,7 +215,7 @@ body {
 }
 
 .canvas-container {
-  height: 800px;
+  height: 2000px;
 
 }
 
@@ -111,7 +233,6 @@ body {
 
 
 #canvas-real {
-  border-right: 1px black solid;
   margin: 0;  
 }
 
@@ -121,23 +242,9 @@ body {
   bottom: 0px;
   left: 0px;
   right: 0px;
-  border-right: 2px black solid;
   margin: 0;
 }
 
 .empty-wrapper {
-  height: 100%;
-}
-/* Options bar */
-.option-wrapper {
-  border-top: 2px black solid;
-}
-
-
-/* line widths */
-
-.linewidth {
-    position: absolute;
-    background-color: black;
-    border-radius: 50%;
+  border-left: 2px black solid;;
 }
