@@ -114,10 +114,10 @@ margin: auto 20px;
 
 /* Hidden element in utility bar */
 
-.brightness-container {
+.brightness-container, .font-container {
   border: 2px black solid;
   height: 50px;
-  visibility: hidden;
+  display: none;
 }
 
 .brightness-range {
@@ -130,17 +130,25 @@ margin: auto 20px;
 
 }
 
-#brightness-icon {
+#brightness-icon, #font-icon, #font-size-icon {
   display: inline-block;
   vertical-align: middle;
 }
 
-#brightness {
+#brightness, #font, #font-size {
   vertical-align: middle;
   display: inline-block;
+  margin: 0 10px;
+
 }
 
+.font-list-box, .font-size-box {
+  display: inline-block
+}
 
+.font-list-box {
+  margin-right: 10px;
+}
 
 
 /* Color palette */
@@ -167,7 +175,7 @@ margin: auto 20px;
   width: 50px;
   height: 50px;
   border: 2px black solid;
-  margin-bottom: 20px;
+  margin: 0 auto;
 }
 
 .secondary-color {
@@ -175,6 +183,7 @@ margin: auto 20px;
   width: 50px;
   height: 50px;
   border: 2px black solid;
+  margin: 0 auto;
 
 }
 
