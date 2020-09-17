@@ -71,11 +71,12 @@
             <!-- The pen-width range input  -->
             <div class="pen-width-range">
               <a id="dot" href="#"><img class="icon-xs4" src="Icons/dot.svg"></a>
-              <input type="range" name="pen-width" id="pen-width" min="1" max="40">
+              <input type="range" name="pen-width" id="pen-width" min="1" max="40" value="10">
             </div>
           </div>
 
           <!-- Hidden element -->
+          <!-- Brightness control -->
           <div class="brightness-container">
             <div class="brightness-range">
               <a id="brightness-icon" href="#"><img class="icon-sm" src="Icons/brightness.svg"></a>
@@ -84,6 +85,24 @@
               <label for="brightness">+20</label>
             </div>
           </div>
+
+          <!-- Change font -->
+          <div class="font-container">
+            <div class="font-list">
+              <div class="font-list-box">
+                <a id="font-icon" href="#"><img class="icon-xs" src="Icons/font.svg"></a>
+                <select id="font" name="font">
+                  <option value="Arial">Arial</option>
+                  <option value="Open Sans">Times New Roman</option> 
+                </select> 
+              </div>
+              <div class="font-size-box">
+                <a id="font-size-icon" href="#"><img class="sicon" src="Icons/font-size.svg"></a>
+                <input type="range" name="font-size" id="font-size" min="10" max="60">  
+              </div>
+            </div>
+          </div>
+
           
         </div>
       </div>
@@ -93,13 +112,18 @@
         <!-- Left-hand-side: color picker -->
         <div class="color-wrapper">
           <div class="color-container">
-            <h6 class="heading text-center">Colors</h6>
+            <h6 class="heading text-center">Colors(HSV)</h6>
             <div id="picker"></div>
-            <div class="color-sample">
-              <h6>Primary color</h6>
-              <div class="primary-color"> </div>
-              <h6>Secondary color</h6>
-              <div class="secondary-color"> </div>
+            <div class="color-sample row justify-content-center">
+              <div class="primary-color-box col text-center">
+                <h6>Primary</h6>
+                <div class="primary-color "> </div>  
+              </div>
+              <div class="secondary-color-box col">
+                <h6>Secondary</h6>
+                <div class="secondary-color"> </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -130,7 +154,7 @@
               <div class="button triangle-button">
                 <a id="drawing-triangle" href="#"><img class="icon-xs" src="Icons/triangle.svg"></a>
               </div>
-              <!-- The drawing triangle button  -->
+              <!-- The addign text button  -->
               <div class="button text-button">
                 <a id="drawing-text" href="#"><img class="icon-xs" src="Icons/text.svg"></a>
               </div>
@@ -211,12 +235,7 @@
                 <a id="filter-brightness" href="#"><img class="icon-sm" src="Icons/brightness.svg"></a>
               </div>
                     
-            </div>
-
-
-
-
-            
+            </div>          
           </div>
         </div>
     
