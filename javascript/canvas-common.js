@@ -12,7 +12,19 @@ let dragging = false;
 let clickNum = 0;
 let eraser_width;
 
+// adding tooltips
+let eleId = document.querySelectorAll('[id^=textbox]');
 
+$(document).on("mousemove", function(event) {
+    $(".tooltip").css({
+        "left": event.pageX,
+        "top": event.pageY
+    });
+    // $(".tooltip").html(eleId);
+});
+
+
+// mouse events
 $("#canvas-draft").mousedown(function(e) {
     let mouseX = e.offsetX;
     let mouseY = e.offsetY;
@@ -124,7 +136,7 @@ class PaintFunction {
     };
 
 
-    // drawing a st line
+    // drawing a straight line
     drawLine(x1, y1, x2, y2, context) {
         context.beginPath();
         context.moveTo(x1, y1);
@@ -137,9 +149,10 @@ class PaintFunction {
         this.contextDraft.fillRect(x, y, 20, 20);
         this.contextDraft.strokeStyle = 'black';
         this.contextDraft.fillStyle = 'black';
-        this.contextReal.strokeStyle = 'black';
-        this.contextReal.fillStyle = 'black';
+
     };
+
+
 
 
 }

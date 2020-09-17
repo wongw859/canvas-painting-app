@@ -1,16 +1,15 @@
-
 <!DOCTYPE html>
 <html class="no-js">
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title></title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-   
+
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
@@ -20,493 +19,224 @@
 
     <!-- Private CSS -->
     <link rel="stylesheet" href="css/style.css" />
-   
-  </head>
-  <body>
+
+</head>
+
+<body>
 
     <div class="main-wrapper">
 
-      <!-- top: utility bar -->
-      <div class="utility-bar-wrapper">
-        <div class="utility-container d-flex flex-row flex-wrap">
-          <!-- Title -->
-          <div class="title">
-            <h3>Canvas++</h3>
-          </div>
-
-          <!-- The save button  -->
-          <div class="utility-button save-button">
-            <a id="save" href="#"><img class="icon-xs" src="Icons/save.svg"></a>
-          </div>  
-
-          <div class="step-button-group d-flex flex-row flex-nowrap">
-            <!-- The undo button  -->
-            <div class="utility-button undo-button">
-              <a id="undo" href="#"><img class="icon-xs" src="Icons/undo.svg"></a>
-            </div>
-            <!-- The redo button  -->
-            <div class="utility-button redo-button">
-              <a id="redo" href="#"><img class="icon-xs" src="Icons/redo.svg"></a>
-            </div>        
-          </div>
-
-          <div class="zoom-button-group d-flex flex-row flex-nowrap">
-            <!-- The zoom-in button  -->
-            <div class="utility-button zoom-in-button">
-              <a id="zoom-in" href="#"><img class="icon-xs" src="Icons/zoom-in.svg"></a>
-            </div>
-            <!-- The zoom-out button  -->
-            <div class="utility-button zoom-out-button">
-              <a id="zoom-out" href="#"><img class="icon-xs" src="Icons/zoom-out.svg"></a>
-            </div>
-          </div>
-
-          <!-- The move button  -->
-          <div class="utility-button move-button">
-            <a id="move" href="#"><img class="icon-xs" src="Icons/drag.svg"></a>
-          </div>
-          
-          <!-- Pen width -->
-          <div class="pen-width-container">
-            <!-- The pen-width range input  -->
-            <div class="pen-width-range">
-              <a id="dot" href="#"><img class="icon-xs4" src="Icons/dot.svg"></a>
-              <input type="range" name="pen-width" id="pen-width" min="1" max="40" value="10">
-            </div>
-          </div>
-
-        <!-- Hidden element -->
-          <!-- Brightness control -->
-          <div class="brightness-container">
-            <div class="brightness-range">
-              <a id="brightness-icon" href="#"><img class="icon-sm" src="Icons/brightness.svg"></a>
-              <input type="button" name="brightness-bright" id="brightness-bright" value="+">
-              <input type="button" name="brightness-dim" id="brightness-dim" value="-">
-            </div>
-          </div>
-
-          <!-- Change font -->
-          <div class="font-container">
-            <div class="font-list">
-              <div class="font-list-box">
-                <a id="font-icon" href="#"><img class="icon-xs" src="Icons/font.svg"></a>
-                <select id="font" name="font">
-                  <option value="Arial">Arial</option>
-                  <option value="Open Sans">Times New Roman</option> 
-                </select> 
-              </div>
-              <div class="font-size-box">
-                <a id="font-size-icon" href="#"><img class="icon" src="Icons/font-size.svg"></a>
-                <input type="range" name="font-size" id="font-size" min="10" max="60" value="12">  
-              </div>
-            </div>
-          </div>
-          <!-- Blur control -->
-          <div class="blur-container">
-            <div class="blur-range">
-              <a id="blur-icon" href="#"><img class="icon-sm" src="Icons/blur.svg"></a>
-              <label for="blur">1</label>
-              <input type="range" name="blur" id="blur" min="1" max="20" value="2">
-              <label for="blur">20</label>
-            </div>
-          </div>
-          <!-- Shadow control -->
-          <div class="shadow-container">
-            <div class="shadow-range">
-              <a id="shadow-icon" href="#"><img class="icon-sm" src="Icons/shadow.svg"></a>
-              <label for="shadow">1</label>
-              <input type="range" name="shadow" id="shadow" min="1" max="20" value="2">
-              <label for="shadow">20</label>
-            </div>
-          </div>
-          
-          
-
-          
+        <!-- top: utility bar -->
+        <div class="utility-bar-wrapper">
+            <h3>Utility bar</h3>
         </div>
-      </div>
-      
-      <!-- middle: canvas area -->
-      <div class="canvas-wrapper">
-        <!-- Left-hand-side: color picker -->
-        <div class="color-wrapper">
-          <div class="color-container">
-            <h6 class="heading text-center">Colors(HSV)</h6>
-            <div id="picker"></div>
-            <div class="color-sample d-flex justify-content-center">
-              <div class="primary-color-box">
-                <div class="primary-color ">
-                  <h6 class="color-number">1</h6>
-                </div>  
-              </div>
-              <div class="secondary-color-box">
-                <div class="secondary-color">
-                  <h6 class="color-number">2</h6>
+
+        <!-- middle: canvas area -->
+        <div class="canvas-wrapper">
+            <!-- Left-hand-side: color picker -->
+            <div class="color-wrapper">
+                <div class="color-container">
+                    <h6 class="color-heading text-center">Colors</h6>
+                    <div id="picker"></div>
                 </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-        
-        <!-- left-hand-side: toolbar -->
-        <div class="toolbar-wrapper">
-          <div class="buttons-wrapper">
-
-            <!-- Object part -->
-            <h6 class="heading text-center">Object</h6>
-            <div class="toolbar-box object-box d-flex flex-row flex-wrap">
-              <!-- The drawing square button  -->
-              <div class="button rectangle-button">
-                <a id="drawing-rectangle" href="#"><img class="icon-xs" src="Icons/square.svg"></a>
-              </div>
-    
-              <!-- The drawing circle button  -->
-              <div class="button circle-button">
-                <a id="drawing-rectangle" href="#"><img class="icon-xs" src="Icons/circle.svg"></a>
-              </div>
-    
-              <!-- The drawing rectangle button  -->
-              <div class="button rectangle-button">
-                <a id="drawing-rectangle" href="#"><img class="icon-xs" src="Icons/rectangle.svg"></a>
-              </div>
-    
-              <!-- The drawing triangle button  -->
-              <div class="button triangle-button">
-                <a id="drawing-triangle" href="#"><img class="icon-xs" src="Icons/triangle.svg"></a>
-              </div>
-              <!-- The adding text button  -->
-              <div class="button text-button">
-                <a id="drawing-text" href="#"><img class="icon-xs" src="Icons/text.svg"></a>
-              </div>
-             
             </div>
 
-            <!-- Line part -->
-            <h6 class="heading text-center">Line</h6>
-            <div class="toolbar-box line-box d-flex flex-row flex-wrap">
+            <!-- left-hand-side: toolbar -->
+            <div class="toolbar-wrapper">
+                <div class="buttons-wrapper">
+                    <h6 class="toolbar-heading text-center">Shape</h6>
+                    <div class="shape-box d-flex flex-row flex-wrap">
+                        <!-- The drawing square button  -->
+                        <div class="button rectangle-button">
+                            <a id="drawing-rectangle" href="#"><img class="icon-xs" src="Icons/square.svg"></a>
+                        </div>
 
-              <!-- The drawing line button  -->
-              <div class="button line-button">
-                <a id="drawing-line" href="#"><img class="icon-sm" src="Icons/pencil.svg"></a>
-              </div>
-    
-              <!-- The drawing straight line button  -->
-              <div class="button straight-line-button">
-                <a id="drawing-straight-line" href="#"><img class="icon" src="Icons/dash.svg"></a>
-              </div>
-    
-              <!-- The drawing bezier button  -->
-              <div class="button curve-button">
-                <a id="drawing-curve" href="#"><img class="icon-sm" src="Icons/curve-line.svg"></a>
-              </div>
-              
-    
-              <!-- The drawing bezier button  -->
-              <div class="button bezier-button">
-                <a id="drawing-bezier" href="#"><img class="icon-sm" src="Icons/bezier.svg"></a>
-              </div>
+                        <!-- The drawing circle button  -->
+                        <div class="button circle-button">
+                            <a id="drawing-circle" href="#"><img class="icon-xs" src="Icons/circle.svg"></a>
+                        </div>
 
-              <!-- The eraser button  -->
-              <div class="button eraser-button">
-                <a id="eraser" href="#"><img class="icon-xs" src="Icons/eraser.svg"></a>
-              </div>
-              
-              
-            </div>
+                        <!-- The drawing rectangle button  -->
+                        <div class="button rectangle-button">
+                            <a id="drawing-rectangle" href="#"><img class="icon-xs" src="Icons/rectangle.svg"></a>
+                        </div>
 
-            <!-- Pen effects -->
-            <h6 class="heading text-center">Pen Effect</h6>
-            <div class="toolbar-box pen-effect-box d-flex flex-row flex-wrap">
+                        <!-- The drawing triangle button  -->
+                        <div class="button triangle-button">
+                            <a id="drawing-triangle" href="#"><img class="icon-xs" src="Icons/triangle.svg"></a>
+                        </div>
+                    </div>
 
-              <!-- The blur effect button  -->
-              <div class="button blur-button">
-                <a id="effect-blur" href="#"><img class="icon-xs" src="Icons/blur.svg"></a>
-              </div>
-    
-              <!-- The drop shadow filter button  -->
-              <div class="button shadow-button">
-                <a id="effect-shadow" href="#"><img class="icon-sm" src="Icons/shadow.svg"></a>
-              </div>
-    
-              <!-- The reset button  -->
-              <div class="button reset-button">
-                <a id="reset" href="#"><img class="icon-sm" src="Icons/reset.svg"></a>
-              </div>
-                    
+                    <h6 class="toolbar-heading text-center">Line</h6>
+                    <div class="toolbar-box line-box d-flex flex-row flex-wrap">
+
+                        <!-- The drawing line button  -->
+                        <div class="button line-button">
+                            <a id="drawing-line" href="#"><img class="icon-sm" src="Icons/pencil.svg"></a>
+                        </div>
+
+                        <!-- The drawing straight line button  -->
+                        <div class="button straight-line-button">
+                            <a id="drawing-straight-line" href="#"><img class="icon" src="Icons/dash.svg"></a>
+                        </div>
+
+                        <!-- The drawing quadratic button  -->
+                        <div class="button curve-button">
+                            <a id="drawing-quadratics" href="#"><img class="icon-sm" src="Icons/curve-line.svg"></a>
+                        </div>
+
+
+                        <!-- The drawing bezier button  -->
+                        <div class="button bezier-button">
+                            <a id="drawing-bezier" href="#"><img class="icon-sm" src="Icons/bezier.svg"></a>
+                        </div>
+
+                    </div>
+                </div>
             </div>
 
 
-            <!-- Filter part -->
-            <h6 class="heading text-center">Filter</h6>
-            <div class="toolbar-box filter-box d-flex flex-row flex-wrap">
 
-              <!-- The invert color filter button  -->
-              <div class="button invert-color-button">
-                <a id="filter-invert" href="#"><img class="icon-xs" src="Icons/invert.svg"></a>
-              </div>
-    
-              <!-- The greyscale filter button  -->
-              <div class="button greyscale-button">
-                <a id="filter-greyscale" href="#"><img class="icon-xs" src="Icons/greyscale.svg"></a>
-              </div>
-    
-              <!-- The brightness button  -->
-              <div class="button brightness-button">
-                <a id="filter-brightness" href="#"><img class="icon-sm" src="Icons/brightness.svg"></a>
-              </div>
-                    
-            </div>          
-          </div>
-        </div>
-    
+            <!-- canvas -->
+            <div class="canvas">
+                <div class="canvas-container">
+                    <div class="canvas-background"></div>
+                    <canvas id="canvas-real" class="canvas" width="1024px" height="800px"></canvas>
+                    <canvas id="canvas-draft" class="canvas" width="1024px" height="800px"></canvas>
+                </div>
+            </div>
 
+            <!-- Right-hand-side: Empty div  -->
+            <div class="empty-wrapper"></div>
 
-        <!-- canvas -->
-        <div class="canvas">
-          <div class="canvas-container">
-            <div class="canvas-background"></div>
-            <canvas
-              id="canvas-real"
-              class="canvas"
-              width="1280px"
-              height="2000px"
-            ></canvas>
-            <canvas
-              id="canvas-draft"
-              class="canvas"
-              width="1280px"
-              height="2000px"
-            ></canvas>
-          </div>    
+            <!-- tooltip -->
+            <div class="tooltip">Hi</div>
         </div>
 
-        <!-- Right-hand-side: Empty div  -->
-        <div class="empty-wrapper"></div>
-      </div>
-
+        <!-- Option bar -->
+        <div class="option-wrapper">
+            <div class="options-container">
+                <h6 class="options-heading text-left">Options</h6>
+            </div>
+        </div>
     </div>
 
+    <!-- Picking size button -->
+    <form id="choose-size">
+        <div class="title">Pick size</div>
+        <div class="radio-group">
+            <input type="radio" name="size" value="1" checked="checked">Small</div>
+        <div class="radio-group">
+            <input type="radio" name="size" value="2">Medium</div>
+        <div class="radio-group"><input type="radio" name="size" value="3">Large</div>
+        <div class="radio-group"><input type="radio" name="size" value="4">Extra large</div>
+    </form>
 
-    <!-- Bootstrap -->
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
-    </script> 
+    <!-- Utilities Buttons -->
+    <div class="buttons">
+        <!-- The save button -->
+        <span class="btn btn-danger fa fa-paint-brush" id="save">Save</span>
 
+        <!-- Bootstrap -->
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+        </script>
 
-
-    <!-- iro.js Color Picker JS / realted personal script -->
-    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>  
-    <script src="./javascript/color-picker.js"></script>
-
-
-    <!-- The drawing functionality  -->
-    <script
-      src="./javascript/canvas-common.js"
-      type="text/javascript"
-      async
-      defer
-    ></script>
-
-    <!-- Line -->
-    <!-- The drawing line functionality  -->
-    <script
-      src="./javascript/drawing-line.js"
-      type="text/javascript"
-      async
-      defer
-    ></script>
-    <!-- The drawing straight line functionality  -->
-    <script
-    src="./javascript/drawing-straight-line.js"
-    type="text/javascript"
-    async
-    defer
-    ></script>
-
-    <!-- The drawing curve functionality  -->
-    <script
-    src="./javascript/quadratic-curve.js"
-    type="text/javascript"
-    async
-    defer
-    ></script>
-
-    <!-- The drawing bezier functionality  -->
-    <script
-    src="./javascript/Bezier-curves.js"
-    type="text/javascript"
-    async
-    defer
-    ></script>
-    <!-- The eraser functionality  -->
-    <script
-    src="./javascript/eraser.js"
-    type="text/javascript"
-    async
-    defer
-    ></script>    
-
-
-    <!-- Shape -->
-    <!-- The drawing rectangle functionality  -->
-    <script
-      src="./javascript/drawing-rectangle.js"
-      type="text/javascript"
-      async
-      defer
-    ></script>
-    <!-- The drawing triangle functionality  -->
-    <script
-      src="./javascript/drawing-triangle.js"
-      type="text/javascript"
-      async
-      defer
-    ></script>
-    <!-- The drawing square functionality  -->
-
-
-    <!-- The drawing circle functionality  -->
-    <script
-    src="./javascript/drawing-circle.js"
-    type="text/javascript"
-    async
-    defer
-    ></script>
-    <!-- Text functionality -->
-    <script
-    src="./javascript/add-text.js"
-    type="text/javascript"
-    async
-    defer
-    ></script>
+        <!-- iro.js Color Picker JS / realted personal script -->
+        <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+        <script src="./javascript/color-picker.js"></script>
 
 
 
-    <!-- Color filters functionality-->
-    <script
-    src="./javascript/filters.js"
-    type="text/javascript"
-    async
-    defer
-   ></script>
+        <!-- The drawing functionality  -->
+        <script src="./javascript/canvas-common.js" type="text/javascript" async defer></script>
 
-    <!-- Pen effects functionality-->
-    <script
-    src="./javascript/pen-effects.js"
-    type="text/javascript"
-    async
-    defer
-   ></script>
+        <!-- The drawing line functionality  -->
+        <script src="./javascript/drawing-line.js" type="text/javascript" async defer></script>
+        <!-- The drawing straight-line functionality  -->
+        <script src="./javascript/drawing-straight-line.js" type="text/javascript" async defer></script>
+        <!-- The drawing rectangle functionality  -->
+        <script src="./javascript/drawing-rectangle.js" type="text/javascript" async defer></script>
+        <!-- Color filters functionality-->
+        <script src="./javascript/color-filters.js" type="text/javascript" async defer></script>
+        <!-- Pen effects functionality-->
+        <script src="./javascript/color-pen-effects.js" type="text/javascript" async defer></script>
+        <!-- The eraser functionality  -->
+        <script src="./javascript/eraser.js" type="text/javascript" async defer></script>
+        <!-- The add text functionality  -->
+        <script src="./javascript/add-text.js" type="text/javascript" async defer></script>
+        <!-- The Undo & Redo functionality  -->
+        <script src="./javascript/undo-redo.js" type="text/javascript" async defer></script>
+        <!-- drawing triangle functionality-->
+        <script src="./javascript/drawing-triangle.js" type="text/javascript" async defer></script>
+        <!-- drawing circle functionality-->
+        <script src="./javascript/drawing-circle.js" type="text/javascript" async defer></script>
+        <!-- bezier curve functionality-->
+        <script src="./javascript/Bezier-curves.js" type="text/javascript" async defer></script>
+        <!-- quadratic curve functionality-->
+        <script src="./javascript/quadratic-curve.js" type="text/javascript" async defer></script>
 
-   <!-- Utilities -->
-    <!-- Undo/redo functionality-->
-    <script
-    src="./javascript/undo-redo.js"
-    type="text/javascript"
-    async
-    defer
-   ></script>
-   
-    <!-- Zoom in/out functionality-->
-    <script
-    src="./javascript/utility-zoom.js"
-    type="text/javascript"
-    async
-    defer
-   ></script>
-    <!-- Move functionality-->
-    <script
-    src="./javascript/utility-move.js"
-    type="text/javascript"
-    async
-    defer
-   ></script>
+        <!-- Inline JS -->
 
-   <!-- Personal script -->
-   <script src="javascript/website-functions.js"></script>
-   
+        <script type="text/javascript">
+            // Stretegy pattern
+            $(() => {
+                currentFunction = new DrawingLine(contextReal)
+                $("#drawing-rectangle").click(() => {
+                    currentFunction = new DrawingRectangle(contextReal, contextDraft);
+                });
+                $("#drawing-line").click(() => {
+                    currentFunction = new DrawingLine(contextReal);
+                });
 
-    
+                $("#drawing-triangle").click(() => {
+                    currentFunction = new DrawingTriangle(contextReal, contextDraft);
+                });
+                $("#drawing-circle").click(() => {
+                    currentFunction = new DrawingCircle(contextReal, contextDraft);
+                });
+                $("#drawing-bezier").click(() => {
+                    currentFunction = new BezierCurves(contextReal, contextDraft);
+                });
+                $("#drawing-quadratics").click(() => {
+                    currentFunction = new QuadraticCurves(contextReal, contextDraft);
+                });
 
+                $("#drawing-straight-line").click(() => {
+                    currentFunction = new DrawingStraightLine(contextReal, contextDraft);
+                });
 
-    <!-- Inline JS -->
-    <script type="text/javascript">
+                $("#clear").click(function() {
+                    if (confirm("Confirm to clear canvas?")) {
+                        var canvas = document.getElementById('canvas-real');
+                        var ctx = canvas.getContext('2d');
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    }
+                });
 
-      // Stretegy pattern
-      $(()=>{
-        $("#drawing-rectangle").click(() => {
-          currentFunction = new DrawingRectangle(contextReal, contextDraft);
-        });
-        $("#drawing-line").click(() => {
-          currentFunction = new DrawingLine(contextReal);
-        });
+                $("#eraser").click(function() {
+                    currentFunction = new DrawingEraser(contextReal);
+                });
 
-        $("#drawing-triangle").click(() => {
-          currentFunction = new DrawingTriangle(contextReal, contextDraft);
-        });
-        $("#drawing-circle").click(() => {
-          currentFunction = new DrawingCircle(contextReal, contextDraft);
-        });
-        $("#bezier-curves").click(() => {
-          currentFunction = new BezierCurves(contextReal, contextDraft);
-        });
-        $("#drawing-quadratics").click(() => {
-          currentFunction = new QuadraticCurves(contextReal, contextDraft);
-        });
+                $("#text").click(function() {
+                    currentFunction = new AddText2(contextReal);
+                });
 
-        $("#drawing-straight-line").click(() => {
-          currentFunction = new DrawingStraightLine(contextReal, contextDraft);
-        });
+                $("#undo").click(function() {
+                    undo();
+                });
 
-        $("#clear").click(function() {
-          if (confirm("Confirm to clear canvas?")) {
-            var canvas = document.getElementById('canvas-real');
-            var ctx = canvas.getContext('2d');
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-          }
-        });
+                $("#redo").click(function() {
+                    redo();
+                })
 
-        $("#eraser").click(function() {
-          currentFunction = new DrawingEraser(contextReal);
-        });
+            })
+        </script>
+</body>
 
-        $("#text").click(function() {
-          currentFunction = new AddText2(contextReal);
-        });
-
-        $("#undo").click(function() {
-          undo();
-        });
-
-        $("#redo").click(function() {
-          redo();
-        })
-
-        $("#zoom-in").click(function() {
-          currentFunction = new Zoom(contextReal, canvasReal);
-          zooming = true;
-        });
-        $("#zoom-out").click(function() {
-          currentFunction = new Zoom(contextReal, canvasReal);
-          zooming = false;
-
-        });
-        $("#move").click(function() {
-          currentFunction = new Move(contextReal, canvasReal);
-        });
-
-      })
-
-    </script>
-  </body>
 </html>
-

@@ -12,7 +12,6 @@ class DrawingLine extends PaintFunction {
     // On mouse down, ensure that the pen has these features
     onMouseDown(coord, event) {
         this.context.fillStyle = "none";
-        this.context.lineJoin = "round";
         this.context.beginPath();
         this.context.moveTo(coord[0], coord[1]);
         this.draw(coord[0], coord[1]);
