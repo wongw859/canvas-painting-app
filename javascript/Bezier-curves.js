@@ -54,15 +54,9 @@ class BezierCurves extends PaintFunction {
             // end point
         }
     }
-    onMouseMove(e) {
-
-    }
-    onDragging(coord, e) {
-
-    }
-    onMouseUp() {
-
-    }
+    onMouseMove(e) {}
+    onDragging(coord, e) {}
+    onMouseUp() {}
     onMouseLeave() {}
     onMouseEnter() {}
     drawLine(x1, y1, x2, y2, context) {

@@ -55,9 +55,7 @@ class QuadraticCurves extends PaintFunction {
         }
     }
     onDragging() {}
-    onMouseMove() {
-
-    }
+    onMouseMove() {}
     onMouseUp() {}
     onMouseLeave() {}
     onMouseEnter() {}
