@@ -33,14 +33,14 @@ colorPicker.on('color:change', function(color) {
   if (color.index === 0) {
     // log the color index and hex value
     // console.log(color.index, color.hexString);
-    console.log(colorPicker.colors[0].hexString);
+    // console.log(colorPicker.colors[0].hexString);
 
     // Change the preview box
     $(".primary-color").css("background-color", color.hexString);
   } else if (color.index === 1) {
     // log the color index and hex value
     // console.log(color.index, color.hexString);
-    console.log(colorPicker.colors[1].hexString);
+    // console.log(colorPicker.colors[1].hexString);
 
     // Change the preview box
     $(".secondary-color").css("background-color", color.hexString);
