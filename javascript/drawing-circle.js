@@ -6,14 +6,17 @@ class DrawingCircle extends PaintFunction {
         this.contextReal = contextReal;
         this.contextDraft = contextDraft;
         this.clickNum = 0
+        this.contextDraft.lineWidth = $('#pen-width').val();
+        this.contextReal.lineWidth = $('#pen-width').val();
+
     }
     onMouseDown() {}
 
     onDragging() {}
 
     onMouseMove(coord, event) {
-        this.contextDraft.strokeStyle = '#f44';
-        this.contextDraft.fillStyle = 'white';
+        this.contextDraft.strokeStyle = colorPicker.colors[0].hexString;
+        this.contextDraft.fillStyle = colorPicker.colors[1].hexString;
 
         if (this.clickNum != 0 && drawing === false) {
             this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
@@ -24,10 +27,13 @@ class DrawingCircle extends PaintFunction {
         }
     }
     onMouseUp(coord, event) {
-        this.contextDraft.strokeStyle = '#f44';
-        this.contextDraft.fillStyle = 'white';
-        this.contextReal.strokeStyle = '#f44';
-        this.contextReal.fillStyle = 'white';
+        this.contextDraft.strokeStyle = colorPicker.colors[0].hexString;
+        this.contextDraft.fillStyle = colorPicker.colors[1].hexString;
+        this.contextReal.strokeStyle = colorPicker.colors[0].hexString;
+        this.contextReal.fillStyle = colorPicker.colors[1].hexString;
+        this.contextDraft.lineWidth = $('#pen-width').val();
+        this.contextReal.lineWidth = $('#pen-width').val();
+
 
         if (this.clickNum === 0) {
             this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);

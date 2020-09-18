@@ -23,6 +23,7 @@ class Move extends PaintFunction {
     }
     onMouseUp(event) {
         $('.canvas-container').css({ "cursor": "move" });
+        
     }
     onMouseLeave(event) {
         $('.canvas-container').css({ "cursor": "default"});

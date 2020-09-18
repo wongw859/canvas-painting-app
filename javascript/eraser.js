@@ -25,10 +25,13 @@ class DrawingEraser extends PaintFunction {
         saveState();
     }
     onMouseLeave() {}
-    onMouseEnter() {}
+    onMouseEnter() {
+        this.context.arc(x, y, $('#pen-width').val(), 0, 2 * Math.PI);
+
+    }
 
     draw(x, y) {
-        this.context.arc(x, y, this.eraser_width, 0, 2 * Math.PI);
+        this.context.arc(x, y, $('#pen-width').val(), 0, 2 * Math.PI);
         this.context.fill();
         this.context.closePath();
     }

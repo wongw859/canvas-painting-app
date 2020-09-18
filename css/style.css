@@ -118,6 +118,10 @@ margin: auto 20px;
   margin-bottom: 0;
 }
 
+.clear-button {
+  margin-right: 20px;
+}
+
 /* Hidden element in utility bar */
 
 .brightness-container, .font-container, .blur-container, .shadow-container {

@@ -39,13 +39,13 @@ $(() => {
         let fontSize = $("#pen-width").val();
 
         console.log(fontSize);
-        if (fontSize <= 10) {
+        if (fontSize <= 20) {
             $("#dot > img").attr("class", "icon-xs4");
-        } else if (fontSize > 10 && fontSize <= 20) {
+        } else if (fontSize > 20 && fontSize <= 40) {
             $("#dot > img").attr("class", "icon-xs3");
-        } else if (fontSize > 20 && fontSize <= 30) {
+        } else if (fontSize > 40 && fontSize <= 60) {
             $("#dot > img").attr("class", "icon-xs2");
-        } else if (fontSize > 30 && fontSize <= 40) {
+        } else if (fontSize > 60 && fontSize <= 80) {
             $("#dot > img").attr("class", "icon-xs");
         }
     
